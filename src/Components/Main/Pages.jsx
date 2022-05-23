@@ -9,7 +9,7 @@ import ListeProduits from '../Pages/ListeProduits'
 
 export default function Pages() { // composant Pages sans props
     
-    const [quantiteGlobale, setquantiteGlobale] = useState({}); // Définition du State quantité Globlale (objet)
+    const [quantiteGlobale, setquantiteGlobale] = useState({}); // Définition du State quantité Globlale (map)
     const [isLoad, setIsLoad] = useState(false);
 
     useEffect(() => { // when componnent is mounted hide load animation
