@@ -1,5 +1,7 @@
 import React from 'react'
-import Case from './Case.jsx'
+import Entete from '../Entete';
+import Case from './Case'
+
 
 export default function Rayon(props) {
 
@@ -15,6 +17,7 @@ export default function Rayon(props) {
   //the returning component
   return (
     <div>
+      <Entete/>
       <h1>Rayon A</h1>
       <p>Vue par produits &#9660;</p>
       <i>Actualisation {time}</i>

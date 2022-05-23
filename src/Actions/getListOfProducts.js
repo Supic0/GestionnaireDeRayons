@@ -1,0 +1,3 @@
+function getListOfProducts () {
+    //fetch api
+}
