@@ -25,7 +25,7 @@ export default function Rayon(props) {
       <div className="grilleProduit">
         {listItems}
       </div>
-      <p>< 1 ></p>
+      <p>&lt; 1 &gt;</p>
     </div>
   )
 }
