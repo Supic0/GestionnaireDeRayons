@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Menu from './Components/Main/Menu'
 import Pages from './Components/Main/Pages'
+
 
 function App() {
   return (

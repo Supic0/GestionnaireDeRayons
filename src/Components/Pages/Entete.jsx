@@ -1,6 +1,7 @@
 import React from 'react'
 import notif from '../../Assets/notif.png'
 import search from '../../Assets/search.png'
+import connexion from '../../Assets/connexion.png'
 
 export default function Entete({pageName}) {
   return (

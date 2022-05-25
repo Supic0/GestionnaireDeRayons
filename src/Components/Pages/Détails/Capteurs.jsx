@@ -1,22 +1,22 @@
-import React from 'react'
-import getQuantityC from '../../../Actions/getQuantity'
+import React, {useState, useEffect} from 'react'
+import {getQuantityC} from '../../../Actions/getQuantity'
 
 export default function Capteurs(produit) {
     //states
-    const [capteur, setcapteur] = useState([])
+    const [capteurs, setcapteurs] = useState();
 
     //effects
     useEffect(() => {
-      let interval = setInterval(setcapteur(getQuantityC(produit)),1000);
+      let interval = setInterval(setcapteurs(getQuantityC(produit)),1000);
       return () => {
         clearInterval(interval);
       }
-    }, [])
+    }, [produit])
      //function
 
-     color = (c) => {
+     const color = (c) => {
          let couleur;
-        if (c>3){
+        if (c>3) {
             couleur = "vert";
         } else if (c<=3) {
             couleur = "orange";
@@ -29,11 +29,12 @@ export default function Capteurs(produit) {
     return (
     <div className='flex'>
         {
-            Array.map(capteur => {
+            capteurs.map(capteur => {
+                return(
                 <div className={color(capteur.quantite)}>
                     <p>{capteur.id}</p>
                     <div className='value'>{capteur.quantite}</div>
-                </div>
+                </div>)
             })
         }
     </div>

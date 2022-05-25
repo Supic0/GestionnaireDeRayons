@@ -1,11 +1,12 @@
-function getListOfProducts () {
+export function getListOfProducts () {
+  let data;
     fetch('184-vmapp01:1880/productList')
     .then(response => response.json())
     .then(data => console.log(data));
     return data;
 }
 
-async function newProduct (nom, epaisseur) {
+export async function newProduct (nom, epaisseur) {
     await fetch('184-vmapp01:1880/createProduct?nom="'+nom+'"&epaisseur='+epaisseur)
     .then(response => {
         if (!response.ok) {

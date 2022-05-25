@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import Entete from '../Entete'
 import { getListOfProducts, newProduct } from '../../../Actions/getListOfProducts'
-
+import modify from '../../../Assets/modificon.png'
+import cross from '../../../Assets/crossicon.png'
 export default function ListeProduits() {
   // hooks
 
@@ -13,14 +14,26 @@ export default function ListeProduits() {
   // variables
 
   // fonctions
+  const tableau = () => {
+    return (
+      list.map(itemList => {
+      <tr>
+        <th>{itemList.nom}</th>
+        <th>{itemList.id}</th>
+        <th>{itemList.epaisseur}</th>
+        <th><img src={modify} alt="" /><img src={cross} alt="" /></th>
+      </tr>
+      })
+    )
+  }
 
-  handleSumit = () => {
+  const handleSumit = () => {
     newProduct(nom, epaisseur);
     setTimeout(setList(getListOfProducts()), 1000);
     setNom("");
     setEpaisseur(null);
   }
-  
+
   return (
     <div>
       <Entete />
@@ -33,17 +46,17 @@ export default function ListeProduits() {
           <th>Epaisseur</th>
           <th>Options</th>
         </tr>
-        {Tableau}
+        {tableau}
         <tr>
           <th>
-            <input type="text" placeholder='Nom' onChange={(e) => setNom(e.target.value)} value={nom}/>
+            <input type="text" placeholder='Nom' onChange={(e) => setNom(e.target.value)} value={nom} />
           </th>
 
           <th>
           </th>
 
           <th>
-            <input type="number" placeholder='epaisseur' onChange={(e) => setEpaisseur(e.target.value)} value={epaisseur}/>
+            <input type="number" placeholder='epaisseur' onChange={(e) => setEpaisseur(e.target.value)} value={epaisseur} />
           </th>
 
           <th>

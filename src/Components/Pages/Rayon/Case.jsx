@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Case(props) {
+export default function Case({title,value}) {
     return (
         <div>
-            <p>props.title</p>
-            <div>props.value</div>
+            <Link to="Details" params={{ produit: title }}>
+            <p>{title}</p>
+            <div>{value}</div>
+            </Link>
         </div>
     )
 }

@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Entete from '../Entete';
 import Case from './Case'
+import { getAllQuantity } from '../../../Actions/getQuantity';
 
 
-export default function Rayon(props) {
+export default function Rayon() {
 
-  // some variables
+  const quantiteGlobale = useState(getAllQuantity);
+   // some variables
   const event = new Date(Date.now());
   const time = event.toLocaleDateString('fr-FR') + " à " + event.getHours() + "h" + event.getMinutes();
 
-  const listItems = props.quantiteGlobal.keys(tifs).map((key) =>
-    <Case title={key} value={tifs[key]}/>
+  const listItems = quantiteGlobale.map((key) =>
+    <Case title={key.nom} value={key.quantite}/>
   )
 
 
