@@ -1,6 +1,7 @@
-export function getQuantityP(produit) {
+
+export function getQuantityP(produit) { //renvoie la quantitée globale d'un produit
     let total;
-    fetch('http://184-vmapp01:1880/getQuantityProduct?nom=' + produit)
+    return fetch('http://184-vmapp01:1880/getQuantityProduct?nom=' + produit)
         .then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -9,20 +10,33 @@ export function getQuantityP(produit) {
         }
             )
         .then(data => {
-            console.log(data);
             data.forEach(element => {
                 total += parseInt(element.quantite);
-                return total;
-            })
+            });
+            return total; 
         }).catch(function(error) {
             console.log(error);
         });
-
 }
 
-export function getQuantityC(produit) { //get actual quantity of all sensors of a product
-    let verif = [];
-    fetch('http://184-vmapp01:1880/getQuantitySensor?nom=' + produit)
+export function getQuantitySensorProduct(produit) { //renvoie la quantitée de chaque capteur d'un produit
+
+    return fetch('http://184-vmapp01:1880/getQuantityProduct?nom=' + produit)
+        .then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            response.json()
+        })
+        .then(data => {
+            return data; 
+        }).catch(function(error) {
+            console.log(error);
+        });
+}
+
+export function getQuantityC() {  //renvoie la quantitée de chaque capteurs actifs
+    return fetch('http://184-vmapp01:1880/getQuantitySensors')
         .then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -30,17 +44,6 @@ export function getQuantityC(produit) { //get actual quantity of all sensors of 
             response.json();
         })
         .then(data => {
-            console.log(data);
-            data = data.filter(el => {
-
-                if (!verif.includes(el.idCapteur)) {
-                    verif.push(el.idCapteur);
-                    return true;
-                } else {
-
-                return false
-                }
-            })
             return data
         }).catch(function(error) {
             console.log(error);
@@ -49,9 +52,8 @@ export function getQuantityC(produit) { //get actual quantity of all sensors of 
 
 
 
-export function getAllQuantity() { //return [{nom: x, quantite:x},{nom: y,quantitet y}]
-    let verif = [];
-    fetch('http://184-vmapp01:1880/getHistory')
+export function getAllQuantity() { //return [{nom: x, quantite:x},{nom: y,quantite: y}]
+    return fetch('http://184-vmapp01:1880/getHistory')
         .then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -59,35 +61,7 @@ export function getAllQuantity() { //return [{nom: x, quantite:x},{nom: y,quanti
             return response.json()
         })
         .then(data => {
-            console.log(data);
-
-            data = data.filter(el => {
-                if (!verif.includes(el.idCapteur)) {
-                    verif.push(el.idCapteur);
-                    return true;
-                } else {
-                return false;
-            }
-            })
-
-            let dataOfProduct=[]
-            data.forEach(el => {
-                console.log(el);
-                if (!dataOfProduct.map(thing => thing.nom).includes("boo")){
-                    
-                    dataOfProduct.push(el);
-                } else {
-                    console.log("yes");
-                    let index = dataOfProduct.indexOf(el);
-                    dataOfProduct[index].quantite += parseInt(el.quantite);
-                }
-            })
-            console.log(dataOfProduct)
-            let finalData = dataOfProduct.map(el => {
-                return {nom : el.nom, quantite : el.quantite};
-            })
-            console.log(finalData);
-            return finalData;
+            return data;
         }).catch(function(error) {
             console.log(error);
         });

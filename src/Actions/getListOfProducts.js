@@ -1,9 +1,19 @@
-export function getListOfProducts () {
-  let data;
-    fetch('184-vmapp01:1880/productList')
-    .then(response => response.json())
-    .then(data => console.log(data));
-    return data;
+export async function getListOfProducts() {
+
+  let data = await fetch('http://184-vmapp01:1880/productList')
+      .then(response => {
+          if (!response.ok) {
+              throw Error(response.statusText);
+          }
+          return response.json()
+      })
+      .then(data => {
+
+          return data;
+      }).catch(function (error) {
+          console.log(error);
+      });
+  return data;
 }
 
 export async function newProduct (nom, epaisseur) {
@@ -17,3 +27,4 @@ export async function newProduct (nom, epaisseur) {
         console.error('There has been a problem with your fetch operation:', error);
       });
 }
+

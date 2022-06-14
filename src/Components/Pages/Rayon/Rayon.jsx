@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import Entete from '../Entete';
 import Case from './Case'
 import { getAllQuantity } from '../../../Actions/getQuantity';
@@ -6,7 +6,13 @@ import { getAllQuantity } from '../../../Actions/getQuantity';
 
 export default function Rayon() {
 
-  const quantiteGlobale = useState(getAllQuantity);
+  const [quantiteGlobale,setQuantiteGlobale] = useState(second)
+
+  useEffect(async () => {
+    let data = await getAllQuantity();
+    setQuantiteGlobale(data);
+  }, []);
+  
    // some variables
   const event = new Date(Date.now());
   const time = event.toLocaleDateString('fr-FR') + " à " + event.getHours() + "h" + event.getMinutes();
@@ -15,6 +21,7 @@ export default function Rayon() {
     <Case title={key.nom} value={key.quantite}/>
   )
 
+  
 
   //the returning component
   return (
