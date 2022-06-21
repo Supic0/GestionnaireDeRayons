@@ -15,7 +15,7 @@ export default function Pages() { // composant Pages sans props
 
             <Routes>
                 <Route path="/" element={<Rayon />} /> 
-                <Route path="/Details" element={<Details />} />
+                <Route path="/Details/:produit" element={<Details />} />
                 <Route path="/Produits" element={<ListeProduits />} />
             </Routes>
         </div>

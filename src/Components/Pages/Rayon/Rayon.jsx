@@ -1,16 +1,18 @@
 import React, {useState,useEffect} from 'react'
-import Entete from '../Entete';
 import Case from './Case'
-import { getAllQuantity } from '../../../Actions/getQuantity';
+import {  getQuantityProducts } from '../../../Actions/getQuantity';
 
 
 export default function Rayon() {
 
-  const [quantiteGlobale,setQuantiteGlobale] = useState(second)
+  const [quantiteGlobale,setQuantiteGlobale] = useState([])
 
-  useEffect(async () => {
-    let data = await getAllQuantity();
-    setQuantiteGlobale(data);
+  useEffect(() =>{
+    getQuantityProducts().then(data => setQuantiteGlobale(data));
+    let IntervalQuantity = setInterval(() => {getQuantityProducts().then(data => setQuantiteGlobale(data))},5000);
+    return () => {
+      clearInterval(IntervalQuantity);
+    }
   }, []);
   
    // some variables
@@ -18,7 +20,7 @@ export default function Rayon() {
   const time = event.toLocaleDateString('fr-FR') + " à " + event.getHours() + "h" + event.getMinutes();
 
   const listItems = quantiteGlobale.map((key) =>
-    <Case title={key.nom} value={key.quantite}/>
+    <Case title={key.nom} key={key.nom} value={key.quantite}/>
   )
 
   
@@ -26,7 +28,6 @@ export default function Rayon() {
   //the returning component
   return (
     <div>
-      <Entete/>
       <h1>Rayon A</h1>
       <p>Vue par produits &#9660;</p>
       <i>Actualisation {time}</i>
