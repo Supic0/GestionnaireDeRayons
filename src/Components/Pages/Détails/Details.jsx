@@ -4,6 +4,7 @@ import { getQuantityP } from '../../../Actions/getQuantity'
 import Capteurs from './Capteurs'
 import { Link, useParams } from 'react-router-dom'
 import { getIdProduct } from '../../../Actions/getListOfProducts'
+
 export default function Details() {
 
   const [total, setTotal] = useState("");

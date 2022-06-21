@@ -1,0 +1,80 @@
+.Menu {
+    background-color: #363740;
+    width: 15%;
+    min-width: fit-content;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ul,.ul2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ul>li {
+    width: 200px;
+    display: flex;
+    gap: 15px;
+    padding-left: 40px;
+} 
+
+.ul2 li {
+    display: flex;
+    gap: 15px;
+    padding-left: 80px;
+}
+.ul li:hover {
+    opacity: 0.5;
+}
+.ul svg {
+    height: 100%;
+    margin: auto 0;
+}
+.ul p{
+ color: #A4A6B3;
+
+}
+
+.logo {
+    margin: 30px 0;
+    position: relative;
+    left: 45%;
+    transform: translate(-50%);
+}
+
+.pop {
+    position: relative;
+}
+.pop::after {
+    content: "";
+    background-color: white;
+    opacity: 0.03;
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.pop::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content:"";
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    opacity: 0.75;
+}
+
+.pop p {
+    color:#DDE2FF;
+}
+
+.pop svg {
+    fill: white;
+    opacity: 1;
+}
