@@ -1,38 +1,59 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import graphic from '../../../Assets/graphic.png'
 import { getQuantityP } from '../../../Actions/getQuantity'
 import Capteurs from './Capteurs'
 import { Link, useParams } from 'react-router-dom'
 import { getIdProduct } from '../../../Actions/getListOfProducts'
+import style from './Details.module.css'
+import { getQuantitySensorProduct } from '../../../Actions/getQuantity'
 
 export default function Details() {
 
   const [total, setTotal] = useState("");
-  const {produit} = useParams();
+  const { produit } = useParams();
   const [reference, setReference] = useState();
-  
+  const [capteurs, setCapteurs] = useState([{ idCapteur: 0, quantite: 0 }]);
+
   useEffect(() => {
     getQuantityP(produit).then(data => setTotal(data));
-    let interval1 = setInterval(() => getQuantityP(produit).then(data => setTotal(data)),2000);
+    let interval1 = setInterval(() => getQuantityP(produit).then(data => setTotal(data)), 2000);
     getIdProduct(produit).then(data => setReference(data));
+    getQuantitySensorProduct(produit).then(data => setCapteurs(data));
+    let interval2 = setInterval(() => getQuantitySensorProduct(produit).then(data => setCapteurs(data)), 2000);
     return () => {
       clearInterval(interval1);
+      clearInterval(interval2);
     }
   }, [produit])
 
+  //function
 
+  const calcColor = (c) => {
+    let couleur;
+    if (c <= 0) {
+      couleur = "#9FA2B4";
+    } else if (c <= 3) {
+      couleur = "#FEC400";
+    } else if (c > 3) {
+      couleur = "#29CC97";
+    }
+    return couleur;
+  }
 
   return (
-    <div id="details">
-      <Link to="/"><button>Retour</button></Link>
-      <div className="total">{total}</div>
-      <div id="infos">
-        <h2>{produit}</h2>
-        <p>Référence = {reference}</p>
-        <p>Etat = indisponible</p>
+    <div className={style.details}>
+      <div className={style.back}><Link to="/">Retour</Link></div>
+      <div className={style.infos}>
+        <div className={style.total} style={{ backgroundColor: calcColor(total) }}>{total}</div>
+        <div className={style.description}>
+          <h1>{produit}</h1>
+          <p>Référence : #{reference}</p>
+          <p>Etat : indisponible</p>
+          <p>{ capteurs.length } poussoirs actif{ capteurs.length>1?"s":"" }</p>
+        </div>
+        <Capteurs capteurs={capteurs} calcColor={calcColor} />
       </div>
-      <Capteurs produit={produit}/>
       <img src={graphic} alt="will arrive soon" />
-    </div>
+    </div >
   )
 }

@@ -1,0 +1,59 @@
+.Rayon {
+    width: 100%;
+    padding-left: 40px;
+    margin-top: 20px;
+    max-width: 1300px;
+}
+
+.Fake {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 90%;
+    justify-content: space-between;
+    
+}
+
+.Fake p {
+    margin: 0;
+    
+}
+
+.grille {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 500px;
+}
+
+
+.case {
+    width: 160px;
+    height: 120px;
+    border: 1px solid rgba(0, 0, 0, .18);
+    border-radius: 15px;
+}
+
+.case:hover{
+    border: 1px solid rgba(0, 0, 0, .22);
+}
+
+.case p {
+    color: #9FA2B4;
+    width: 100%;
+    text-align: center;
+}
+
+.case div {
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+.pages {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}

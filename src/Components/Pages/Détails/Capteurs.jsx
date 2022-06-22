@@ -1,39 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { getQuantitySensorProduct } from '../../../Actions/getQuantity'
+import React from 'react'
 
-export default function Capteurs({ produit }) {
+import style from './Details.module.css'
+
+export default function Capteurs({ calcColor, capteurs }) {
     //states
-    const [capteurs, setCapteurs] = useState([{idCapteur:0,quantite:0}]);
-
-    //effects
-    useEffect(() => {
-        getQuantitySensorProduct(produit).then(data => setCapteurs(data));
-        let interval = setInterval(() => getQuantitySensorProduct(produit).then(data => setCapteurs(data)), 2000);
-        return () => {
-            clearInterval(interval);
-        }
-    }, [produit])
-    //function
-
-    const calcColor = (c) => {
-        let couleur;
-        if (c > 3) {
-            couleur = "vert";
-        } else if (c <= 3) {
-            couleur = "orange";
-        } else if (c <= 0) {
-            couleur = "rouge";
-        }
-        return "gt " + couleur;
-    }
-
+    
     return (
-        <div className='flex'>
+        <div className={style.capteursZone}>
             {
                 capteurs.map((capteur,i) => {
                     return (
-                        <div className={calcColor(capteur.quantite)} key={i}>
-                            <p>{capteur.idCapteur}</p>
+                        <div style={{backgroundColor: calcColor(capteur.quantite)}} className={style.capteur} key={i}>
+                            <p>id: {capteur.idCapteur}</p>
                             <div className='value'>{capteur.quantite}</div>
                         </div>)
                 })
