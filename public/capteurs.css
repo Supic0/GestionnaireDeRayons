@@ -8,7 +8,7 @@
 
 #Entete {
   background-color: #363740;
-  height: 8vh;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,10 +33,10 @@ h1 {
   width: 330px;
 }
 
-body, html {
+body {
   background: white;
-  height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  height: 100%
 }
 #root {
   margin:0;
