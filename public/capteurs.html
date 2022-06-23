@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="activer.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="capteurs.css">
+    <title>Capteur</title>
 </head>
 
 <body>
-    <div id="body">
+    <div id="Entete">
+        <h2>EasyFacing - Jacquemet</h2>
+    </div>
+    
+    <div id="body" class="divs">
+        <h1>Activer le capteur</h1>
         <div id="root" class="select-menu active">
             <div class="select-btn">
-                <span class="sBtn-text">Choisir un produit </span>
+                <span style="flex:1"></span>
+                <span class="sBtn-text" >Choisir un produit </span>
+                <span style="flex:1">&#9660;</span>
                 <i class="bx bx-chevron-down"></i>
             </div>
         </div>
-        <button id="valider">Valider</button>
+        <button id="valider" class="valid">Valider</button>
     </div>
 
-    <div id="body2">
+    <div id="body2" class="divs">
+        <h1>Désactiver le capteur</h1>
         <button id="oublier">Oublier le capteur</button>
     </div>
+
+    <div id="body3" class="divs" style="display: none;">
+        <h1>Vérifiez que le poussoir soit vide</h1>
+        <button class="valid">Valider</button>
+    </div>
+
 </body>
-<script src="activer.js"></script>
+<script src="capteurs.js"></script>
 
 </html>

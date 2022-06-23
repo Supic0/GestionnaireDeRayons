@@ -67,8 +67,9 @@ function activeClick() {
         options = optionMenu.querySelectorAll(".option"),
         sBtn_text = optionMenu.querySelector(".sBtn-text");
 
-    selectBtn.addEventListener("click", () =>
-        optionMenu.classList.toggle("active")
+    selectBtn.addEventListener("click", () => {
+        optionMenu.classList.toggle("active");
+    }
     );
 
     options.forEach((option) => {
@@ -86,32 +87,41 @@ function activeClick() {
 let valider = document.querySelector("#valider");
 valider.addEventListener("click", () => {
     let produit = document.querySelector(".sBtn-text").innerText;
-
+    document.querySelector("#body").style.display = "none";
+    document.querySelector("#body2").style.display = "none";
+    document.querySelector("#body3").style.display = "flex";
+    let ok = document.querySelector("#body3 button");
+    ok.addEventListener("click", () => {
     fetch('http://184-vmapp01:1880/link?idCapteur=' + idCapteur + '&nom=' + produit)
         .then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
+            if (response.ok) {
+                window.location.href = "./success.html"
+            }
             return response.json()
         })
         .catch(function (error) {
-            console.log(error);
+            window.location.href = "./error.html?error="+error;
         });
-    location.reload();
 })
+});
 
 let oublier = document.querySelector("#oublier");
 oublier.addEventListener("click", () => {
-
-    fetch('http://184-vmapp01:1880/unLink?idCapteur=' + idCapteur)
+        fetch('http://184-vmapp01:1880/unLink?idCapteur=' + idCapteur)
         .then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
+            }
+            if (response.ok) {
+                window.location.href = "./success.html";
             }
             return response.json()
         })
         .catch(function (error) {
             console.log(error);
+            window.location.href = "./error.html?error="+error;
         });
-    location.reload();
 })
