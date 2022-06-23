@@ -22,8 +22,8 @@ export default function ListeProduits() {
 
   const deleteProduct = produit => {
     delProduct(produit)
-    .then(() => getListOfProducts())
-    .then(data => {setList(data)});
+    .then(() => getListOfProducts()
+    .then(data => {setList(data)}));
   }
   // variables
  let tableau = list.map(itemList => {
@@ -37,7 +37,8 @@ export default function ListeProduits() {
   })
   // fonctions
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     newProduct(nom, epaisseur)
     .then(() => getListOfProducts())
     .then(data => {setList(data)});

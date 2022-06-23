@@ -1,4 +1,4 @@
-export function getListOfProducts() {
+export async function getListOfProducts() {
 
   return fetch('http://184-vmapp01:1880/productList')
       .then(response => {
@@ -14,7 +14,7 @@ export function getListOfProducts() {
           console.log(error);
       });
 }
-export function getIdProduct(produit) {
+export async function getIdProduct(produit) {
   return fetch('http://184-vmapp01:1880/productList')
       .then(response => {
           if (!response.ok) {
@@ -32,7 +32,7 @@ export function getIdProduct(produit) {
       });
   
 }
-export function newProduct (nom, epaisseur) {
+export async function newProduct (nom, epaisseur) {
     return fetch('http://184-vmapp01:1880/createProduct?nom='+nom+'&epaisseur='+epaisseur)
     .then(response => {
         if (!response.ok) {
@@ -44,7 +44,7 @@ export function newProduct (nom, epaisseur) {
       });
 }
 
-export function delProduct (nom) {
+export async function delProduct (nom) {
   return fetch('http://184-vmapp01:1880/deleteProduct?nom='+nom)
   .then(response => {
       if (!response.ok) {
