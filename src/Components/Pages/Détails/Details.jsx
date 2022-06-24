@@ -55,8 +55,8 @@ export default function Details() {
         <div className={style.total} style={{ backgroundColor: calcColor(total) }}>{total}</div>
         <div className={style.description}>
           <h1>{produit}</h1>
-          <p>Référence : #{reference}</p>
-          <p>Etat : indisponible</p>
+          <p>Référence article : #{reference}</p>
+          <p>Etat : XX%</p>
           <p>{capteurs.length} poussoirs actif{capteurs.length > 1 ? "s" : ""}</p>
         </div>
         <Capteurs capteurs={capteurs} calcColor={calcColor} />

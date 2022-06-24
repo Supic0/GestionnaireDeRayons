@@ -59,7 +59,6 @@ export default function Rayon() {
       <div className={style.grille}>
         {listItems}
       </div>
-      <p className={style.pages}>&lt; 1 &gt;</p>
     </div>
   )
 }

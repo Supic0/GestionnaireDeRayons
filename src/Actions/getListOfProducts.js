@@ -7,10 +7,8 @@ export async function getListOfProducts() {
           }
           return response.json()
       })
-      .then(data => {
-
-          return data;
-      }).catch(function (error) {
+      .then(data => data)
+      .catch(function (error) {
           console.log(error);
       });
 }
