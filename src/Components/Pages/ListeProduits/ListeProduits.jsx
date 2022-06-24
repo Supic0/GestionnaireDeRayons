@@ -27,8 +27,10 @@ export default function ListeProduits() {
   }
   // variables
   let tableau = list.map(itemList => {
+    console.log("item");
     return (
-      <tr key={itemList.nom}>
+      
+      <tr key={itemList.idProduit}>
         <td>{itemList.nom}</td>
         <td>{itemList.idProduit}</td>
         <td>{itemList.epaisseur} mm</td>
@@ -46,10 +48,11 @@ export default function ListeProduits() {
   const handleSubmit = (e) => {
     e.preventDefault();
     newProduct(nom, epaisseur)
-      .then(() => getListOfProducts())
-      .then(data => { setList(data) });
-    setNom("");
-    setEpaisseur("");
+      .then(() => getListOfProducts().then(data => { 
+        ordre ? setList(data.sort(SortArray)) : setList(data);}))
+        .then(()=>{
+        setNom("");
+        setEpaisseur(""); })
   }
 
 

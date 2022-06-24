@@ -10,6 +10,7 @@ export async function getListOfProducts() {
       .then(data => data)
       .catch(function (error) {
           console.log(error);
+          
       });
 }
 export async function getIdProduct(produit) {
@@ -34,7 +35,7 @@ export async function newProduct (nom, epaisseur) {
     return fetch('http://184-vmapp01:1880/createProduct?nom='+nom+'&epaisseur='+epaisseur)
     .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not OK');
+          throw new Error(response.statusText);
         }
       })
       .catch(error => {
