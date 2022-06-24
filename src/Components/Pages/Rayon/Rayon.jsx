@@ -27,7 +27,6 @@ export default function Rayon() {
   }
 
   const getColor = quantite => {
-    console.log(quantite);
     if (quantite <=0) {
       return "red";
     } else if (quantite <=3){

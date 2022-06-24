@@ -73,6 +73,11 @@
     width: 150px;
 }
 
+.table input::selection {
+    color: black;
+    background: #d0d7ff ;
+  }
+
 .options input {
     width: fit-content;
     background-color: #3751FF ;
