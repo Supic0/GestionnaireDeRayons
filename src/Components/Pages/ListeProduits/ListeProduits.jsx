@@ -18,8 +18,8 @@ export default function ListeProduits() {
     getListOfProducts().then(data => {
       ordre ? setList(data.sort(SortArray)) : setList(data);
     });
-  }, [ordre])
-
+  }, [ordre])  
+ 
   const deleteProduct = produit => {
     delProduct(produit)
       .then(() => getListOfProducts()
@@ -37,8 +37,8 @@ export default function ListeProduits() {
         <td className={style.options}><img src={modify} alt="" /><img src={cross} onClick={() => deleteProduct(itemList.nom)} alt="" /></td>
       </tr>);
   })
-  // fonctions
 
+  // fonctions
   function SortArray(x, y) {
     if (x.nom < y.nom) { return -1; }
     if (x.nom > y.nom) { return 1; }
