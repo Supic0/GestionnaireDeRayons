@@ -29,7 +29,9 @@ export default function Rayon() {
     <div className={style.Rayon}>
       <h1>Rayon A</h1>
       <div className={style.Fake}>
-        <p style={{cursor:"pointer"}} onClick={() => {setVue(!vue)}}>Vue par produits &#9660;</p>
+        <p style={{cursor:"pointer"}} onClick={() => {setVue(!vue)}}>
+        {!vue?"Vue par Produits":"Vue par Capteurs"} &#9660;
+        </p>
         <i>Actualisation {time}</i>
         
       </div>
