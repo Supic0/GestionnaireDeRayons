@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import style from './Rayon.module.css'
 import RayonProduit from './RayonProduit';
 import RayonCapteur from './RayonCapteur';
+
 export default function Rayon() {
 
   const [time, setTime] = useState("")
@@ -22,9 +23,7 @@ export default function Rayon() {
     setTime(time);
   }
 
-
-
-  //the returning component
+  // the returning component
   return (
     <div className={style.Rayon}>
       <h1>Rayon A</h1>

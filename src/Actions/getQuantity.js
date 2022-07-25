@@ -43,6 +43,7 @@ export async function getQuantityC() {  //renvoie la quantitée de chaque capteu
             return response.json();
         })
         .then(data => {
+            data.sort(function(a, b){return a.idCapteur - b.idCapteur});
             return data
         }).catch(function (error) {
             console.log(error);
